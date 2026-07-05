@@ -355,9 +355,16 @@
       text-align: center;
     }
     .demo-title em { color: var(--accent); font-style: italic; }
-    .demo-frame {
+    .demo-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
       width: 100%;
-      max-width: 860px;
+    }
+    .demo-frame {
+      flex: 1 1 380px;
+      max-width: 560px;
       aspect-ratio: 16/9;
       border-radius: 12px;
       overflow: hidden;
@@ -824,13 +831,23 @@
   <!-- Demo -->
   <section class="demo">
     <h2 class="demo-title reveal">See it in <em>action</em></h2>
-    <div class="demo-frame reveal reveal-delay-1">
-      <iframe
-        src="https://www.youtube.com/embed/MCs8JtUT5D4"
-        title="Ayjan Minutes demo"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen
-      ></iframe>
+    <div class="demo-row reveal reveal-delay-1">
+      <div class="demo-frame">
+        <iframe
+          src="https://www.youtube.com/embed/MCs8JtUT5D4"
+          title="Ayjan Minutes demo"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </div>
+      <div class="demo-frame">
+        <iframe
+          src="https://www.youtube.com/embed/rbwklx87Yaw"
+          title="Ayjan Minutes installation demo"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </div>
     </div>
   </section>
 
