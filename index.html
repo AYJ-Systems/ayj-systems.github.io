@@ -167,6 +167,12 @@
       align-items: center;
       flex-wrap: wrap;
     }
+    .hero-note {
+      margin-top: 1rem;
+      font-size: 0.85rem;
+      color: var(--accent);
+      font-weight: 600;
+    }
     .btn-primary {
       display: inline-flex;
       align-items: center;
@@ -706,6 +712,7 @@
     <ul class="nav-links">
       <li><a href="#features">Features</a></li>
       <li><a href="#pricing">Pricing</a></li>
+      <li><a href="about.html">About</a></li>
       <li><a href="#download">Download</a></li>
     </ul>
   </nav>
@@ -727,6 +734,7 @@
         </a>
         <a href="#features" class="btn-ghost">See how it works →</a>
       </div>
+      <p class="hero-note reveal reveal-delay-3">No account required to trial.</p>
     </div>
 
     <div class="hero-visual reveal reveal-delay-2">
@@ -741,7 +749,7 @@
           <div class="rec-header">
             <div class="rec-badge">
               <div class="rec-dot"></div>
-              Recording
+              Taking Notes
             </div>
             <div class="rec-time">12:34</div>
           </div>
@@ -798,7 +806,7 @@
       <div class="feature reveal reveal-delay-2">
         <p class="feature-num">03</p>
         <h3>Summarises with AI</h3>
-        <p>Sends only the transcript to Claude or ChatGPT. Generates structured meeting minutes with action items and decisions.</p>
+        <p>Sends only the transcript to the AI provider you choose. Generates structured meeting minutes with action items and decisions.</p>
       </div>
       <div class="feature reveal reveal-delay-3">
         <p class="feature-num">04</p>
@@ -870,7 +878,8 @@
           <li class="included">5 recordings / month</li>
           <li class="included">5 transcriptions / month</li>
           <li class="included">5 AI summaries / month</li>
-          <li>Priority support</li>
+          <li class="included">No account required to trial</li>
+          <li class="included">Community support</li>
         </ul>
         <a href="#download" class="btn-plan btn-plan-outline">Get Started</a>
       </div>
@@ -917,14 +926,14 @@
     <h2 class="download-title reveal">
       Ready to try<br /><em>Ayjan Minutes?</em>
     </h2>
-    <p class="download-sub reveal reveal-delay-1">Windows 10 / 11 · Free to start · No account required to download</p>
+    <p class="download-sub reveal reveal-delay-1">Free to start · No account required to trial</p>
     <div class="reveal reveal-delay-2">
       <a href="https://github.com/AYJ-Systems/ayjanminutes/releases/download/setup-installer/Ayjan-Minutes-Setup.zip"
          class="btn-primary" target="_blank" rel="noopener">
         Download for Windows
       </a>
     </div>
-    <p class="download-req reveal reveal-delay-3">Requires Windows 10 or later · 64-bit · ~500 MB disk space</p>
+    <p class="download-req reveal reveal-delay-3">Requires Windows 10 or later · 64-bit </p>
   </section>
 
   <!-- Footer -->
@@ -932,6 +941,7 @@
     <span class="footer-logo">Ayjan <span>Minutes</span></span>
     <span class="footer-copy">© 2026 Ayjan Minutes. All rights reserved.</span>
     <div class="footer-social">
+      <a href="about.html" aria-label="About">About</a>
       <a href="privacy.html" aria-label="Privacy Policy">Privacy</a>
       <a href="terms.html" aria-label="Terms of Service">Terms</a>
       <a href="refunds.html" aria-label="Refund Policy">Refunds</a>

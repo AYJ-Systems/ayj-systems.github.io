@@ -11,7 +11,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" type="image/png" href="icon.png" />
-  <title>Privacy Policy — Ayjan Minutes</title>
+  <title>About — Ayjan Minutes</title>
+  <meta name="description" content="Ayjan Minutes is private, on-device AI meeting notes for Windows, built by AYJ Systems." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,300;1,9..144,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
@@ -42,9 +43,8 @@
     .doc-hero::after { content: ''; position: absolute; top: 30%; right: -20%; width: 45vw; height: 45vw; background: radial-gradient(circle, oklch(72% 0.18 200 / 0.06) 0%, transparent 70%); pointer-events: none; }
     .doc-hero h1 { font-family: var(--serif); font-weight: 300; font-size: clamp(2.4rem, 5vw, 4rem); line-height: 1.05; letter-spacing: -0.02em; }
     .doc-hero h1 em { font-style: italic; color: var(--accent); }
-    .doc-hero .updated { margin-top: 1.25rem; font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+    .doc-hero .lede { margin-top: 1.5rem; font-size: 1.1rem; color: var(--text); max-width: 620px; }
     .doc { max-width: 760px; margin: 0 auto; padding: 1rem clamp(1.5rem, 6vw, 5rem) 6rem; }
-    .callout { background: var(--bg-2); border: 1px solid var(--line); border-left: 2px solid var(--accent); padding: 1.25rem 1.5rem; margin: 0 0 2rem; color: var(--text); font-size: 0.95rem; }
     .doc h2 { font-family: var(--serif); font-weight: 300; font-size: clamp(1.4rem, 3vw, 1.9rem); letter-spacing: -0.01em; margin: 2.75rem 0 0.9rem; line-height: 1.2; }
     .doc h2 .s { font-family: var(--serif); font-style: italic; color: var(--accent); font-size: 0.82em; margin-right: 0.6rem; }
     .doc p { margin: 1rem 0; }
@@ -52,6 +52,12 @@
     .doc li { margin: 0.5rem 0; }
     .doc li::marker { color: var(--accent); }
     .doc strong { color: var(--text); font-weight: 500; }
+    .cta { display: inline-block; margin-top: 2.5rem; padding: 0.85rem 1.6rem; border: 1px solid var(--accent); color: var(--accent); font-size: 0.85rem; letter-spacing: 0.06em; text-transform: uppercase; }
+    .cta:hover { background: var(--accent-dim); text-decoration: none; }
+    .founder { margin: 1.5rem 0 0.5rem; }
+    .founder .name { font-family: var(--serif); font-size: 1.25rem; color: var(--text); }
+    .founder .role { font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-top: 0.2rem; }
+    .founder-link { display: inline-block; margin-top: 0.5rem; font-size: 0.85rem; }
     footer { border-top: 1px solid var(--line); padding: 2rem clamp(1.5rem, 6vw, 5rem); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
     .footer-logo { font-family: var(--serif); font-size: 0.95rem; color: var(--muted); }
     .footer-logo span { color: var(--accent); }
@@ -69,42 +75,35 @@
     <ul class="nav-links">
       <li><a href="index.html#features">Features</a></li>
       <li><a href="index.html#pricing">Pricing</a></li>
-      <li><a href="about.html">About</a></li>
       <li><a href="index.html#download">Download</a></li>
     </ul>
   </nav>
 
   <header class="doc-hero">
-    <p class="section-label">Legal</p>
-    <h1>Privacy <em>Policy</em></h1>
-    <p class="updated">Last updated: June 22, 2026</p>
+    <p class="section-label">About</p>
+    <h1>Built by <em>Naing</em>, in Sydney</h1>
+    <p class="lede">Ayjan Minutes records, transcribes, and writes up your meetings — with the audio never leaving your computer.</p>
   </header>
 
   <main class="doc">
-    <div class="callout">Your meeting audio is transcribed <strong>on your own computer</strong> and never uploaded to us. Only the <strong>text transcript</strong> is sent — to the AI provider you choose — to generate your minutes.</div>
+    <div class="founder">
+      <div class="name">Naing</div>
+      <div class="role">Founder &amp; Developer · Sydney, Australia</div>
+      <a class="founder-link" href="https://www.linkedin.com/in/naing-tan-ba-013609148/" target="_blank" rel="noopener">Connect on LinkedIn →</a>
+    </div>
 
-    <p>This policy explains how AYJ Systems handles personal information in Ayjan Minutes, in line with the Australian Privacy Principles.</p>
+    <h2><span class="s">01</span>Why I built it</h2>
+    <p>Most meeting-notes tools stream your conversations to someone else's servers to transcribe them. That's fine until it isn't — a client call, an internal review, anything you'd rather not hand to a third party. I wanted the convenience of automatic minutes without giving up control of the recording.</p>
+    <p>So Ayjan Minutes transcribes <strong>on your own machine</strong>. Only the finished text transcript is sent — to the AI provider <em>you</em> choose — to turn it into a clean set of minutes. Your audio stays with you.</p>
+    <p>I use it every day at work, and it's become an indispensable part of how I run meetings. Instead of scrambling to take notes, I can actually be present — listening, appreciating the conversation, and participating properly — knowing the minutes are already being written for me.</p>
 
-    <h2><span class="s">01</span>What we collect</h2>
-    <ul>
-      <li><strong>Account &amp; usage</strong> — your email, plan, and usage counts.</li>
-      <li><strong>Transcript text</strong> — sent to your chosen AI provider to generate a summary. Your audio stays on your device.</li>
-      <li><strong>Payment</strong> — handled by our payment provider; we don't store your card details.</li>
-      <li><strong>Website</strong> — basic analytics (see Cookies below).</li>
-    </ul>
-    <p>We keep this data while your account is active and only as long as needed to run the Service and meet legal obligations.</p>
+    <h2><span class="s">02</span>Accountable to you</h2>
+    <p>Ayjan Minutes is built in Sydney with a simple commitment: no data-hungry business model, and someone you can actually reach when you need to. Personal data is handled in line with the Australian Privacy Principles; the <a href="privacy.html">Privacy Policy</a> spells out exactly what that means.</p>
 
-    <h2><span class="s">02</span>Who we share it with</h2>
-    <p>We don't sell your data. We share it only with providers who help us run the Service: <strong>Anthropic (Claude)</strong> or <strong>OpenAI (ChatGPT)</strong> for summaries, <strong>Supabase</strong> for accounts, <strong>Railway</strong> for hosting, and our payment provider for billing. Transcripts sent for summaries are not used to train AI models. We may also disclose data where the law requires it.</p>
+    <h2><span class="s">03</span>Get in touch</h2>
+    <p>Reach me directly with questions, feedback, or bug reports at <a href="mailto:ayjan.systems@gmail.com">ayjan.systems@gmail.com</a>.</p>
 
-    <h2><span class="s">03</span>Your rights</h2>
-    <p>You can ask us to access, correct, or delete your information, or close your account, by emailing <a href="mailto:ayjan.systems@gmail.com">ayjan.systems@gmail.com</a>. If you're in the EU/UK you have additional rights under the GDPR. If you're in Australia and unhappy with our response, you can contact the <a href="https://www.oaic.gov.au" target="_blank" rel="noopener">OAIC</a>.</p>
-
-    <h2><span class="s">04</span>Cookies</h2>
-    <p>Our website uses Google Analytics, which sets cookies and collects basic usage data. You can opt out with the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">Google Analytics opt-out add-on</a> or your browser settings.</p>
-
-    <h2><span class="s">05</span>Contact</h2>
-    <p>Questions about this policy: <a href="mailto:ayjan.systems@gmail.com">ayjan.systems@gmail.com</a>. We may update it from time to time and will change the date above.</p>
+    <a href="index.html#download" class="cta">Download for Windows →</a>
   </main>
 
   <footer>
