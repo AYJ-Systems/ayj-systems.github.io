@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex" />
+  <link rel="icon" type="image/png" href="../icon.png" />
+  <title>Checkout — Ayjan Minutes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,300;1,9..144,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: oklch(11% 0.015 210); --bg-2: oklch(15% 0.018 210); --line: oklch(28% 0.018 210);
+      --text: oklch(92% 0.006 210); --read: oklch(80% 0.008 210); --muted: oklch(56% 0.014 210);
+      --accent: oklch(72% 0.18 200); --accent-dim: oklch(72% 0.18 200 / 0.12);
+      --serif: 'Fraunces', Georgia, serif; --sans: 'DM Sans', system-ui, sans-serif;
+    }
+    body { background: var(--bg); color: var(--read); font-family: var(--sans); font-weight: 300; line-height: 1.75; min-height: 100vh; display: flex; flex-direction: column; -webkit-font-smoothing: antialiased; }
+    body::before { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E"); pointer-events: none; z-index: 9999; opacity: 0.4; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    nav { display: flex; align-items: center; justify-content: space-between; padding: 1.25rem clamp(1.5rem, 6vw, 5rem); border-bottom: 1px solid var(--line); }
+    .nav-logo { font-family: var(--serif); font-size: 1.1rem; font-weight: 400; color: var(--text); }
+    .nav-logo:hover { text-decoration: none; }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+    .nav-links a { font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+    .nav-links a:hover { color: var(--text); text-decoration: none; }
+    main { flex: 1; display: flex; align-items: center; justify-content: center; padding: 4rem clamp(1.5rem, 6vw, 5rem); }
+    .card { width: 100%; max-width: 560px; border: 1px solid var(--line); background: var(--bg-2); padding: clamp(2rem, 5vw, 3rem); text-align: center; position: relative; }
+    .card::after { content: ''; position: absolute; top: -30%; right: -30%; width: 40vw; height: 40vw; background: radial-gradient(circle, oklch(72% 0.18 200 / 0.07) 0%, transparent 70%); pointer-events: none; z-index: -1; }
+    .section-label { font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: center; gap: 0.6rem; }
+    .section-label::before { content: ''; display: block; width: 1.5rem; height: 1px; background: var(--accent); }
+    h1 { font-family: var(--serif); font-weight: 300; font-size: clamp(1.8rem, 4vw, 2.6rem); line-height: 1.15; letter-spacing: -0.02em; color: var(--text); }
+    h1 em { font-style: italic; color: var(--accent); }
+    p { margin-top: 1.25rem; }
+    .hint { font-size: 0.85rem; color: var(--muted); margin-top: 1.75rem; }
+    .btn { display: inline-block; margin-top: 2rem; padding: 0.85rem 1.6rem; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; border: none; cursor: pointer; font-family: var(--sans); background: var(--accent); color: oklch(11% 0.012 55); transition: opacity 0.2s, transform 0.2s; }
+    .btn:hover { opacity: 0.85; transform: translateY(-1px); text-decoration: none; }
+    .btn-outline { background: transparent; color: var(--muted); border: 1px solid var(--line); }
+    .btn-outline:hover { color: var(--text); border-color: var(--muted); }
+    .spinner { width: 28px; height: 28px; margin: 0 auto; border: 2px solid var(--line); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.8s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    @media (prefers-reduced-motion: reduce) { .spinner { animation-duration: 2.4s; } }
+    footer { border-top: 1px solid var(--line); padding: 2rem clamp(1.5rem, 6vw, 5rem); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+    .footer-logo { font-family: var(--serif); font-size: 0.95rem; color: var(--muted); }
+    .footer-logo span { color: var(--accent); }
+    .footer-copy { font-size: 0.75rem; color: var(--muted); }
+    .footer-social { display: flex; gap: 1rem; align-items: center; }
+    .footer-social a { color: var(--muted); font-size: 0.8rem; }
+    .footer-social a:hover { color: var(--text); }
+    [hidden] { display: none !important; }
+    @media (max-width: 720px) { .nav-links a { display: none; } }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="nav-logo">Ayjan <span>Minutes</span></a>
+  <ul class="nav-links">
+    <li><a href="../index.html#features">Features</a></li>
+    <li><a href="../index.html#pricing">Pricing</a></li>
+    <li><a href="../index.html#download">Download</a></li>
+  </ul>
+</nav>
+
+<main>
+  <!-- Loading -->
+  <div class="card" id="state-loading">
+    <p class="section-label">Checkout</p>
+    <div class="spinner"></div>
+    <p>Opening secure checkout…</p>
+  </div>
+
+  <!-- Bad / expired / used token -->
+  <div class="card" id="state-error" hidden>
+    <p class="section-label">Checkout</p>
+    <h1>This link has <em>expired</em></h1>
+    <p id="error-detail">Checkout links are single-use and last 15 minutes.</p>
+    <p class="hint">Reopen it from Ayjan Minutes → Settings → Account → Upgrade to Pro.</p>
+    <a href="../index.html" class="btn btn-outline">Back to site</a>
+  </div>
+
+  <!-- Overlay dismissed without paying -->
+  <div class="card" id="state-closed" hidden>
+    <p class="section-label">Checkout</p>
+    <h1>Checkout <em>closed</em></h1>
+    <p>No payment was taken.</p>
+    <p class="hint">Start again from Ayjan Minutes → Settings → Account → Upgrade to Pro.</p>
+    <a href="../index.html" class="btn btn-outline">Back to site</a>
+  </div>
+
+  <!-- Paid -->
+  <div class="card" id="state-done" hidden>
+    <p class="section-label">Checkout</p>
+    <h1>Payment <em>complete</em></h1>
+    <p>Return to Ayjan Minutes — your Pro plan activates automatically within a few seconds.</p>
+    <p class="hint">If the app is still showing Free, press “I've paid — refresh” in the waiting window.</p>
+    <a href="../index.html" class="btn btn-outline">Back to site</a>
+  </div>
+</main>
+
+<footer>
+  <span class="footer-logo">Ayjan <span>Minutes</span></span>
+  <span class="footer-copy">© 2026 Ayjan Minutes. All rights reserved.</span>
+  <div class="footer-social">
+    <a href="../privacy.html">Privacy</a>
+    <a href="../terms.html">Terms</a>
+    <a href="../refunds.html">Refunds</a>
+    <a href="mailto:ayjan.systems@gmail.com">Contact</a>
+  </div>
+</footer>
+
+<script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
+<script>
+  // The desktop app hands this page an opaque single-use token and nothing else.
+  // Email, user id and price live server-side and come back from the relay below,
+  // so no personal data ever appears in a URL, history entry or referrer header.
+  //
+  // IMPORTANT: checkout.completed here is display only. Pro is granted solely by
+  // Paddle's signed webhook hitting the relay — a client event proves nothing.
+  const RELAY = 'https://ainotetakersource-production.up.railway.app';
+
+  function show(id, detail) {
+    for (const el of document.querySelectorAll('main .card')) el.hidden = (el.id !== id);
+    if (detail) document.getElementById('error-detail').textContent = detail;
+  }
+
+  async function start() {
+    const token = new URLSearchParams(location.search).get('token');
+    if (!token) {
+      show('state-error', 'This page needs a checkout link from the Ayjan Minutes app.');
+      return;
+    }
+
+    let params;
+    try {
+      const res = await fetch(RELAY + '/billing/checkout-params?token=' + encodeURIComponent(token));
+      if (!res.ok) {
+        show('state-error', 'Checkout links are single-use and last 15 minutes.');
+        return;
+      }
+      params = await res.json();
+    } catch (e) {
+      show('state-error', 'Could not reach the Ayjan Minutes server. Check your connection and try again.');
+      return;
+    }
+
+    if (!params.paddle_client_token) {
+      show('state-error', 'Checkout is not configured yet. Please contact ayjan.systems@gmail.com.');
+      return;
+    }
+
+    // Paddle fires checkout.closed when the buyer dismisses the overlay — including
+    // the success screen shown AFTER checkout.completed. Latch completion so that
+    // close doesn't overwrite "Payment complete" with "No payment was taken".
+    let completed = false;
+
+    try {
+      Paddle.Environment.set(params.environment);
+      Paddle.Initialize({
+        token: params.paddle_client_token,
+        eventCallback: function (event) {
+          if (event.name === 'checkout.completed') {
+            completed = true;
+            show('state-done');
+          } else if (event.name === 'checkout.closed' && !completed) {
+            show('state-closed');
+          }
+        }
+      });
+      Paddle.Checkout.open({
+        items: [{ priceId: params.price_id, quantity: 1 }],
+        customer: { email: params.customer_email },
+        customData: params.custom_data,
+        settings: { displayMode: 'overlay' }
+      });
+    } catch (e) {
+      show('state-error', 'Could not open checkout: ' + e.message);
+    }
+  }
+
+  start();
+</script>
+
+</body>
+</html>
