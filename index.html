@@ -640,6 +640,21 @@
       margin-top: 1rem;
       letter-spacing: 0.03em;
     }
+    .download-actions {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .download-note {
+      max-width: 34rem;
+      margin: 0.75rem auto 0;
+      font-size: 0.75rem;
+      line-height: 1.6;
+      color: var(--muted);
+    }
+    .download-note a { color: var(--accent); }
 
     /* ── Footer ── */
     footer {
@@ -928,13 +943,21 @@
       Ready to try<br /><em>Ayjan Minutes?</em>
     </h2>
     <p class="download-sub reveal reveal-delay-1">Free to start · No account required to trial</p>
-    <div class="reveal reveal-delay-2">
+    <div class="reveal reveal-delay-2 download-actions">
       <a href="https://github.com/AYJ-Systems/ayjanminutes/releases/download/setup-installer/Ayjan-Minutes-Setup.zip"
          class="btn-primary" target="_blank" rel="noopener">
         Download for Windows
       </a>
+      <a href="https://github.com/AYJ-Systems/ayjanminutes/releases"
+         class="btn-ghost" target="_blank" rel="noopener">Release notes →</a>
     </div>
-    <p class="download-req reveal reveal-delay-3">Requires Windows 10 or later · 64-bit </p>
+    <p class="download-req reveal reveal-delay-3">Requires Windows 10 or later · 64-bit</p>
+    <p class="download-note reveal reveal-delay-3">
+      Every version and what changed in it is listed on
+      <a href="https://github.com/AYJ-Systems/ayjanminutes/releases" target="_blank" rel="noopener">GitHub</a>.
+      The installer isn’t code-signed yet, so Windows may show “Windows protected your PC” —
+      click <strong>More info → Run anyway</strong>.
+    </p>
   </section>
 
   <!-- Footer -->
