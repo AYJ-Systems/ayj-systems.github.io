@@ -1,173 +1,192 @@
 # Ayjan Minutes
 
-Professional Windows meeting recorder with an intuitive GUI that captures mic + system audio simultaneously, then:
-1. **Transcribes** using local `faster-whisper` models (no audio leaves your machine)
-2. **Generates AI meeting minutes** as professionally-formatted Word documents (optional)
+**Record a meeting. Get the minutes.** A Windows desktop app that captures your mic and
+your system audio together, transcribes the recording **on your own machine**, and turns it
+into a formatted Word document with agenda items, decisions and colour-coded action items.
 
-Records as stereo WAV, transcripts saved as plain text, and structured meeting minutes exported as Word documents with color-coded action items.
+Your audio never leaves your computer. Only the finished transcript text is sent for
+summarisation — and if you bring your own API key, you choose who sees it.
 
-<img width="736" height="645" alt="Screenshot 2026-05-10 185815" src="https://github.com/user-attachments/assets/a1fa4830-26e3-4ffd-9131-0ff57e62fcd8" />
+[**Download**](https://ayj-systems.github.io/ayjanminutes/) ·
+[About](https://ayj-systems.github.io/ayjanminutes/about.html) ·
+[Release notes](https://github.com/AYJ-Systems/ayjanminutes/releases)
 
-## Quick Start
+<img width="736" height="645" alt="Ayjan Minutes main window" src="https://github.com/user-attachments/assets/a1fa4830-26e3-4ffd-9131-0ff57e62fcd8" />
 
-### Download Installer
-Download the latest installer from the [Website](https://ayj-systems.github.io/ayjanminutes/)
+---
 
-Run `Ayjan-Minutes-Setup.exe` — it's a small (~15 MB) installer that downloads and installs the full app. During setup you can optionally download the Whisper transcription model so it is ready before your first meeting. No Python or manual setup needed.
+## Install
 
-On first run, sign in or create a free account to get started.
+1. Download `Ayjan-Minutes-Setup.exe` from the [website](https://ayj-systems.github.io/ayjanminutes/).
+2. Run it. The installer is ~15 MB and pulls the app down during setup — no Python, no
+   command line.
+3. Tick **Download transcription model** if you want the app ready to go before your first
+   meeting. Skip it and the model downloads on your first transcription instead.
 
-## Account & Plans
+Windows 10 or 11. Updates arrive in-app: a pill button appears when a new version is out,
+and one click installs it.
 
-A free account is required to use the app. Sign up with your email or use **Sign in with Google** for one-click login.
+## First run
 
-| Feature | Free | Pro |
+Three ways in, on the sign-in screen:
+
+| | What you get |
+|---|---|
+| **Try free — no account** | 5 recordings. No email, no password, no card. |
+| **Sign up** | Free account, 5 AI minutes per month, keeps your usage across reinstalls. |
+| **Sign in with Google** | Same as above, one click. |
+
+Forgot your password? The **Forgot password?** link emails a reset and walks you through
+the new one without leaving the app.
+
+> Guest usage doesn't transfer. If you start as a guest and create an account later, the
+> account begins with a fresh set of free recordings.
+
+## How it works
+
+**1 — Record.** Pick your microphone and your speaker, hit record. The speaker selection is
+what captures the *other* people: Teams, Zoom, Meet, a browser call, anything playing
+through Windows. The transcript preview fills in live as you talk, so there's little to wait
+for when you stop.
+
+**2 — Transcribe.** `faster-whisper` runs locally. No internet needed for this step. On an
+NVIDIA card it's 3–5× faster; on CPU it still works, just slower.
+
+**3 — Minutes.** The transcript goes to an AI summariser and comes back as a Word document.
+
+Everything lands in your Documents folder:
+
+```
+Documents/Ayjan Minutes/
+├── recordings/        meeting_20260725_143022.wav     stereo, 48 kHz
+├── transcripts/raw/   meeting_20260725_143022.txt     plain text
+└── meeting_minutes/   meeting_20260725_143022_minutes.docx
+                       meeting_20260725_143022_minutes.txt
+```
+
+## What the minutes look like
+
+The Word document is built from a template and includes:
+
+- **Header** — project, date, time, location, attendees, apologies, objective
+- **Agenda items** — a table per item: issues raised, decisions made, actions agreed
+- **Open questions** — anything left unresolved
+- **Next meeting** — date and time, if it came up
+- **Action items summary** — colour-coded by owner: 🟢 internal, 🟡 external, 🔵 cross-party
+
+**Getting names right.** Whisper mangles unusual names. Add the people you meet with to the
+**Names** tab and the AI corrects the spelling for you — "Ning" becomes "Naing". They're
+treated as *possible* attendees, so listing someone who wasn't there does no harm; only
+names that actually appear in the transcript are used.
+
+## Plans
+
+| | Free | Pro |
 |---|---|---|
-| Recording & local transcription | Unlimited | Unlimited |
-| AI meeting minutes (Built-in AI) | Monthly limit | Unlimited |
+| Recording | Unlimited | Unlimited |
+| Local transcription | Unlimited | Unlimited |
+| AI meeting minutes | 5 per month | Unlimited |
+| Your own Claude / OpenAI key | ✓ | ✓ |
 
-## AI Meeting Minutes
+Pro comes as a monthly or an annual plan — current pricing is on the
+[website](https://ayj-systems.github.io/ayjanminutes/).
 
-Meeting minutes are generated automatically after transcription. Three provider options are available under **Settings → AI Provider**:
+Upgrade under **Settings → Account → Upgrade to Pro**. Payment goes through Paddle's
+checkout; your plan switches over by itself once it clears, usually within seconds. Pro is
+tied to your account, so it follows you to any machine you sign in on.
 
-| Provider | Key required | Notes |
+To cancel or get an invoice, use the link in your Paddle receipt email. Refunds: see the
+[refund policy](https://ayj-systems.github.io/ayjanminutes/refunds.html). Note that a
+refund alone doesn't end a subscription — cancel it as well.
+
+## AI providers
+
+**Settings → AI Provider** — three options:
+
+| Provider | Key needed | |
 |---|---|---|
-| **Built-in AI** (default) | No | Works immediately after sign-in |
-| Claude (Anthropic) | Yes | Enter your key from [console.anthropic.com](https://console.anthropic.com) |
-| OpenAI | Yes | Enter your key from [platform.openai.com](https://platform.openai.com) |
+| **Built-in AI** | No | The default. Works the moment you sign in. Counts against your plan. |
+| **Claude** | Yes | Your key from [console.anthropic.com](https://console.anthropic.com). Billed by Anthropic, unlimited from our side. |
+| **OpenAI** | Yes | Your key from [platform.openai.com](https://platform.openai.com). Same deal. |
 
-Built-in AI is the default — no API key needed, just sign in and enable summarization in Settings.
+Keys are stored locally and reused next session. Built-in AI is the one to use unless you
+have a reason not to.
 
-To use Claude or OpenAI directly: go to **Settings → AI Provider**, select your provider, and enter your API key. The key is saved securely for future sessions.
+## Transcription models
 
-## Main Features
+Bigger is more accurate and slower. **medium** is the default and a good balance. Change it
+under **Settings → Model**.
 
-### Recording Panel
-- **Select Microphone** — Choose from available mics, or use default
-- **Select Speaker** — Choose system audio source (captures meeting app audio, browser calls, etc.)
-- **Record Button** — Start/stop recording with elapsed time display
-- **Live Transcript** — Preview updates in real time as you record, so you're not waiting after you stop
-- **Files are saved to:**
-  - Audio: `Documents/ayjan_minutes/recordings/meeting_TIMESTAMP.wav`
-  - Transcript: `Documents/ayjan_minutes/transcripts/raw/meeting_TIMESTAMP.txt`
-  - Minutes: `Documents/ayjan_minutes/meeting_minutes/meeting_TIMESTAMP_minutes.docx` + `.txt`
+| Model | Download | Relative speed | Accuracy |
+|---|---|---|---|
+| tiny | 39 MB | fastest | lower |
+| base | 140 MB | very fast | good |
+| small | 244 MB | ~1× | better |
+| medium | 769 MB | ~2× slower | very good |
+| turbo | ~809 MB | fast | very good |
+| large-v3 | ~1.5 GB | ~4× slower | best |
 
-### Recording Library
-- View all past recordings with timestamps
-- Select recordings to re-transcribe or generate minutes from
-- Delete recordings to save space
-- Configure max recordings to keep (auto-cleanup removes oldest)
+Models cache to `%USERPROFILE%\.cache\ayjan_minutes\models\` — downloaded once, then reused.
+Safe to delete that folder to reclaim space; it re-downloads when next needed.
 
-### Transcription
-- Live transcription during recording — minimal wait after stopping
-- Choose model size: tiny, base, small, medium, large-v3, turbo
-- Auto/GPU/CPU device selection
-- Automatic output saved to `Documents/ayjan_minutes/transcripts/raw/`
+### Using your GPU
 
-### Meeting Minutes
-- Auto-generate formatted Word documents from transcripts
-- Formatted with meeting info, agenda items, action items, and color-coded owners
-- Enable/disable in **Settings → Enable Summarization**
+Transcription runs on CPU unless it finds something better. For an NVIDIA card:
 
-### Attendee Management
-- Manage a list of possible attendee names under the **Names** tab
-- The AI uses these names to correct transcription spelling errors (e.g. "Ning" → "Naing")
-- Names are treated as *possible* attendees — only names that appear in the transcript are used
-- Add/remove names directly from the Names tab, or edit `assets/possible_names.csv`
+1. Install [CUDA Toolkit 12.x](https://developer.nvidia.com/cuda-toolkit-archive) —
+   Windows, x86_64, `exe (local)`, default settings.
+2. Restart the app. The device indicator in the Transcription panel reads **CUDA** when it's
+   working.
 
-### Settings Tab
-- Theme toggle (light/dark mode)
-- Microphone and speaker selection
-- Model size configuration
-- AI provider and API key management
-- Summarization enable/disable
-- Account info and upgrade
+**Settings → Device** controls this: **Auto** (GPU if present, CPU otherwise — the default),
+**CUDA** (GPU only), **CPU** (never use the GPU).
 
-## Output
-
-After recording, files are saved to your Documents folder:
-- **Audio**: `Documents/ayjan_minutes/recordings/meeting_20260312_222558.wav` (stereo, 48kHz)
-- **Transcript**: `Documents/ayjan_minutes/transcripts/raw/meeting_20260312_222558.txt` (plain text)
-- **Meeting Minutes** (if enabled):
-  - `Documents/ayjan_minutes/meeting_minutes/meeting_20260312_222558_minutes.txt` (markdown)
-  - `Documents/ayjan_minutes/meeting_minutes/meeting_20260312_222558_minutes.docx` (formatted Word doc)
-
-### Meeting Minutes Format
-
-The Word document includes:
-- **Header Info**: Project, Date, Time, Location, Attendees, Apologies, Objective
-- **Agenda Items**: Table with Issues, Decisions, and Action Items for each item
-- **Questions**: Open questions raised during the meeting
-- **Next Meeting**: Scheduled date/time if mentioned
-- **Action Items Summary**: Color-coded by owner (🟢 Internal, 🟡 External, 🔵 Cross-party)
-
-## faster-whisper Models
-
-| Model    | Size   | Speed | Accuracy  |
-|----------|--------|-------|-----------|
-| tiny     | 39 MB  | Fast  | Lower     |
-| base     | 140 MB | Fast  | Good      |
-| small    | 244 MB | ~1×   | Better    |
-| medium   | 769 MB | ~2×   | Very Good |
-| large-v3 | ~1.5 GB| ~4×   | Best      |
-| turbo    | ~809 MB| Fast  | Very Good |
-
-**The installer downloads the model during setup** (if you check the option). If you skip it, the model downloads automatically on your first transcription.
-
-**Cache location:**
-- Windows: `%USERPROFILE%\.cache\ayjan_minutes\models\`
-- Models are cached after the first download (one-time only)
-- Safe to delete the folder to free space — the model re-downloads on next use
-
-## GPU Acceleration
-
-By default, transcription runs on CPU. For NVIDIA GPU acceleration (3–5x faster on medium/large models):
-
-**Step 1: Install CUDA Toolkit 12.x**
-
-Download from [NVIDIA's CUDA Toolkit page](https://developer.nvidia.com/cuda-toolkit-archive):
-- Select **Windows**, **x86_64**, **12.x**, **exe (local)**
-- Run the installer with default settings
-
-**Step 2: Restart the app**
-
-Ayjan Minutes detects your GPU automatically. The device indicator in the Transcription panel will show **CUDA** once it's working.
-
-**Device options (configurable in Settings):**
-- **Auto** (default) — Uses GPU if available, falls back to CPU automatically
-- **CUDA** — Forces GPU only
-- **CPU** — Forces CPU (ignores GPU)
-
-**Performance:**
-- **CPU (int8)**: ~1× speed — fine for short recordings and small models (tiny/base)
-- **GPU (float16)**: ~3–5× speed — recommended for medium/large models or long recordings
+CPU is fine for short recordings and the small models. Use the GPU for medium/large or
+anything over half an hour.
 
 ## Troubleshooting
 
-**No audio captured**
-- Open the app and check the **Select Microphone** and **Select Speaker** dropdowns
-- Verify the selected devices are working in Windows Sound settings
+**No audio in the recording**
+Check the **Select Microphone** and **Select Speaker** dropdowns, and confirm both devices
+work in Windows Sound settings. If only *your* voice is missing after a Windows or driver
+update, the app already works around a known WASAPI bug — update to the latest version.
 
-**First transcription is slow**
-- The model is downloading on first use — this is a one-time wait
-- Subsequent runs use the cached model from `%USERPROFILE%\.cache\ayjan_minutes\models\`
-- Switch to a smaller model (tiny/base) in **Settings → Model** for faster results
+**First transcription takes forever**
+It's downloading the model — one time only. Later runs use the cache. Switch to tiny or base
+under **Settings → Model** if you want speed over accuracy.
 
-**Meeting minutes not generating**
-- Go to **Settings** and confirm **Enable Summarization** is ON
-- For Built-in AI: ensure you're signed in with a valid session
-- For Claude/OpenAI: verify your API key is entered under **Settings → AI Provider**
+**No minutes generated**
+Confirm **Settings → Enable Summarization** is on. On Built-in AI, check you're signed in.
+On Claude/OpenAI, check the key under **Settings → AI Provider**. If you're on Free and out
+of monthly minutes, it'll tell you.
 
-**Can't sign in / forgotten password**
-- Use **Forgot password?** on the login screen to reset your password via email
-- Check your internet connection — sign-in requires network access
+**Can't sign in**
+Sign-in needs a network connection. Use **Forgot password?** to reset. With no connection
+the app opens in offline mode — recording and transcription still work, minutes don't.
 
 **GPU errors after installing CUDA**
-- Restart your computer after installing CUDA Toolkit
-- If the error persists, the app will fall back to CPU automatically
+Reboot. If it persists the app falls back to CPU on its own, so nothing is lost.
+
+**Paid but still showing Free**
+The "Waiting for Payment" window has an **I've paid — refresh** button. Failing that,
+restart the app. If it's still Free after a few minutes, get in touch.
+
+## Privacy
+
+- **Audio never leaves your machine.** Recording and transcription are entirely local.
+- **Transcript text** is sent to the AI provider you selected, to produce the minutes.
+- **No payment details** ever reach us — Paddle handles that, and is the merchant of record.
+- Full detail in the [privacy policy](https://ayj-systems.github.io/ayjanminutes/privacy.html).
 
 ## Limitations
 
-- Windows 10/11 only
-- English audio only — non-English recordings are detected and skipped with a warning
-- Transcription accuracy depends on audio quality (noise, clarity, volume)
+- Windows 10/11 only — system-audio capture relies on WASAPI loopback.
+- English audio only. Non-English recordings are detected and skipped with a warning.
+- Accuracy tracks audio quality: background noise, low volume and people talking over each
+  other all cost you.
+
+---
+
+[Terms](https://ayj-systems.github.io/ayjanminutes/terms.html) ·
+[Privacy](https://ayj-systems.github.io/ayjanminutes/privacy.html) ·
+[Refunds](https://ayj-systems.github.io/ayjanminutes/refunds.html)
